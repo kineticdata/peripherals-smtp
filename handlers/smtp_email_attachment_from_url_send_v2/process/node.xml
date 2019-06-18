@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="smtp_email_attachment_from_url_send" name="SMTP Email Attachment From Url Send" schema_version="1.0" version="2">
+    <author>support@kineticdata.com</author>
+    <description>This handler builds and sends a plaintext or HTML encoded email (with an optional attachment) directly to the specified email server specified by the associated task info values.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/smtp_email_with_attachment_send/1</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="to" label="To" required="true"
+          tooltip="A comma separated list of email address to be used as the intended recipients.  Custom names can be used if any of the addresses are provided in the format: NAME &lt;ADDRESS&gt;"/>
+        <parameter id="cc" label="CC" required="false"
+          tooltip="A comma separated list of email address to be used as the intended CC recipients.  Custom names can be used if any of the addresses are provided in the format: NAME &lt;ADDRESS&gt;"/>
+        <parameter id="bcc" label="BCC" required="false"
+          tooltip="A comma separated list of email address to be used as the intended BCC recipients.  Custom names can be used if any of the addresses are provided in the format: NAME &lt;ADDRESS&gt;"/>
+        <parameter id="display_name" label="Display Name (From)" required="false"
+          tooltip="The value to be used for the Name of the sender (the email address of the sender can not be manually set)."/>
+        <parameter id="reply_to" label="Reply To" required="false"
+          tooltip="The address of the account that email replies should be sent to.  The email address of the A custom name can be used if the address is provided in the format: NAME &lt;ADDRESS&gt;"/>
+        <parameter id="subject" label="Subject" required="false"
+          tooltip="The subject of the email."/>
+        <parameter id="htmlbody" label="HTML Body" required="false"
+          tooltip="HTML representing the body of the email (should start with '&lt;html&gt;' and end with '&lt;/html&gt;')."/>
+        <parameter id="textbody" label="Alternate Body (Text)" required="false"
+          tooltip="A plaintext message that will be displayed if the recipient can't display multipart HTML emails."/>
+        <parameter id="attachment_file_name" label="Attachment Name" required="false"
+          tooltip="The name of the attachment for this email message."/>
+        <parameter id="attachment_url" label="Attachment Url" required="false"
+          tooltip="The url for the attachment for this email message." />
+        <parameter id="attachment_encoding" label="Attachment Encoding" required="true" menu="Plain,Base64"
+          tooltip="This parameter specifies whether the attachment content is Base64 encoded.">Plain</parameter>
+        <parameter id="raise_errors" label="Raise Errors" required="true" menu="True,False"
+          tooltip="If true, errors will be raised like normal and the tree will stop. If false, the error will be included in the results but the tree will continue processing.">True</parameter>
+    </parameters>
+    <handler name="smtp_email_attachment_from_url_send" version="2">
+        <infos>
+            <info name="server">&lt;%= @info['server'] %&gt;</info>
+            <info name="port">&lt;%= @info['port'] %&gt;</info>
+            <info name="tls">&lt;%= @info['tls'] %&gt;</info>
+            <info name="from">&lt;%= @info['from'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="to">&lt;%= @parameters['to'] %&gt;</parameter>
+            <parameter name="cc">&lt;%= @parameters['cc'] %&gt;</parameter>
+            <parameter name="bcc">&lt;%= @parameters['bcc'] %&gt;</parameter>
+            <parameter name="display_name">&lt;%= @parameters['display_name'] %&gt;</parameter>
+            <parameter name="reply_to">&lt;%= @parameters['reply_to'] %&gt;</parameter>
+            <parameter name="subject">&lt;%= @parameters['subject'] %&gt;</parameter>
+            <parameter name="htmlbody">&lt;%= @parameters['htmlbody'] %&gt;</parameter>
+            <parameter name="textbody">&lt;%= @parameters['textbody'] %&gt;</parameter>
+            <parameter name="attachment_file_name">&lt;%= @parameters['attachment_file_name'] %&gt;</parameter>
+            <parameter name="attachment_url">&lt;%= @parameters['attachment_url'] %&gt;</parameter>
+            <parameter name="attachment_encoding">&lt;%= @parameters['attachment_encoding'] %&gt;</parameter>
+            <parameter name="raise_errors">&lt;%= @parameters['raise_errors'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="Success"/>
+        <result name="Error Message"/>
+        <result name="Message Id"/>
+    </results>
+</taskDefinition>

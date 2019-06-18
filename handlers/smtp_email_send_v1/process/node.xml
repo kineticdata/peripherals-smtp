@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="smtp_email_send" name="SMTP Email Send" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>This handler builds and sends a plaintext or HTML encoded email directly to the specified email server specified by the associated task info values.</description>
+    <helpurl/>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="error_handling" label="Error Handling" required="true"
+            tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
+        <parameter id="from" label="From (Email Address)" required="true" tooltip="The email address of the simulated sender."/>
+        <parameter id="to" label="To (Email Address)" required="true" tooltip="The email address of the intended recipient."/>
+        <parameter id="subject" label="Subject" required="false" tooltip="The subject of the email."/>
+        <parameter id="htmlbody" label="HTML Body" required="false" tooltip="HTML representing the body of a rich email."/>
+        <parameter id="textbody" label="Alternate (text) Body" required="false" tooltip="A plaintext message that will be displayed if the recipient can't display multipart HTML emails."/>
+    </parameters>
+    <handler name="smtp_email_send" version="1">
+        <infos>
+            <info name="server">&lt;%= @info['server'] %&gt;</info>
+            <info name="port">&lt;%= @info['port'] %&gt;</info>
+            <info name="tls">&lt;%= @info['tls'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ? @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
+            <parameter name="from">&lt;%= @parameters['from'] %&gt;</parameter>
+            <parameter name="to">&lt;%= @parameters['to'] %&gt;</parameter>
+            <parameter name="subject">&lt;%= @parameters['subject'] %&gt;</parameter>
+            <parameter name="htmlbody">&lt;%= @parameters['htmlbody'] %&gt;</parameter>
+            <parameter name="textbody">&lt;%= @parameters['textbody'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="Handler Error Message"/>
+        <result name="Message Id"/>
+    </results>
+</taskDefinition>

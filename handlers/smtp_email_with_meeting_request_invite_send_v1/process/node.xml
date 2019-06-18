@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="smtp_email_with_meeting_request_invite_send" name="SMTP Email With Meeting Request Invite Send" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Creats an ICS calendar event and sends the file via email to a list of recipients</description>
+    <helpurl>http://ktc.kineticdata.com/handler/ics_event_invite_send/1</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="to" label="To" required="true"
+          tooltip="A comma separated list of email address to be used as the intended recipients.  Custom names can be used if any of the addresses are provided in the format: NAME &lt;ADDRESS&gt;"/>
+        <parameter id="summary" label="Summary" required="true"
+          tooltip="A short summary of the event"/>
+        <parameter id="description" label="Description" required="true"
+          tooltip="A full description of the event"/>
+        <parameter id="location" label="Location" required="false"
+          tooltip="The location of the event"/>
+        <parameter id="start_date_time" label="Start Date/Time" required="true"
+          tooltip="A start Date/Time of the event(in ISO8601 format)"/>
+        <parameter id="end_date_time" label="End Date/Time" required="true"
+          tooltip="An end Date/Time of the event(in ISO8601 format)"/>
+    </parameters>
+    <handler name="smtp_email_with_meeting_request_invite_send" version="1">
+        <infos>
+            <info name="server">&lt;%= @info['server'] %&gt;</info>
+            <info name="port">&lt;%= @info['port'] %&gt;</info>
+            <info name="tls">&lt;%= @info['tls'] %&gt;</info>
+            <info name="from">&lt;%= @info['from'] %&gt;</info>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="to">&lt;%= @parameters['to'] %&gt;</parameter>
+            <parameter name="summary">&lt;%= @parameters['summary'] %&gt;</parameter>
+            <parameter name="description">&lt;%= @parameters['description'] %&gt;</parameter>
+            <parameter name="location">&lt;%= @parameters['location'] %&gt;</parameter>
+            <parameter name="start_date_time">&lt;%= @parameters['start_date_time'] %&gt;</parameter>
+            <parameter name="end_date_time">&lt;%= @parameters['end_date_time'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="Message Id"/>
+    </results>
+</taskDefinition>

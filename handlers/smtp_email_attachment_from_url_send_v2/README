@@ -1,0 +1,88 @@
+== SMTP Email Attachment From Url
+This handler builds and sends a simple Smtp email (with an optional attachment) 
+directly to an email server
+based on the specified info items and parameters passed to the task instance.
+
+=== Parameters
+[To]
+A comma separated list of email address to be used as the intended recipients.  
+Custom names can be used if any of the addresses are provided in the format: NAME <ADDRESS>
+[CC]
+A comma separated list of email address to be used as the intended CC recipients.  
+Custom names can be used if any of the addresses are provided in the format: NAME <ADDRESS>
+[BCC]
+A comma separated list of email address to be used as the intended BCC recipients.  
+Custom names can be used if any of the addresses are provided in the format: NAME <ADDRESS>
+[Display Name (From)]
+The value to be used for the Name of the sender (the email address of the sender 
+can not be manually set).
+[Reply To]
+The address of the account that email replies should be sent to.  The email address 
+of the A custom name can be used if the address is provided in the format: NAME <ADDRESS>
+[Subject]
+The subject of the email
+[HTML Body]
+HTML representing the body of the email (should start with '<html>' and end with '</html>').
+[Alternate Body (Text)]
+ A plaintext message that will be displayed if the recipient can't display multipart HTML emails.
+[Attachment Name]
+The name of the attachment for this email message.
+[Attachment Url]
+The url for the attachment for this email message.
+[Attachment Encoding]
+This parameter specifies whether the attachment content is Base64 encoded.
+[Raise Errors]
+If true, errors will be raised like normal and the tree processing will stop. If false, the
+error will be included in the results but the tree will continue processing.
+
+==== Sample Configuration
+To::    <%=@answer['Req Full Name']%> <<%=@answer['Req Email']%>>
+CC::    <%=@results['Retrieve Requester Manager']['Email']%>
+BCC::
+Display Name (From)::    <%=@template['Name']%>
+Reply To::    <%=@results['Retrieve Fulfiller']['Name']%> <<%=@results['Retrieve Fulfiller']['Email']%>>
+Subject::     Your request is being processed.
+HTML Body::   <html>
+    Your ...<br/>
+    Thanks,<br/>
+    <%=@results['Retrieve Fulfiller']['Name']%><br/>
+    <img src="http://my.company.com/images/logo"/>
+  </html>
+Alternate Body (Text)::   Your.....
+ Thanks
+<%=@results['Retrieve Fulfiller']['Name']%>
+Attachment Name::  <%=@results['Retrieve Attachment']['Name']%>
+Attachment Content::   <%=@results['Retrieve Attachment']['Content']%>
+Attachment Encoding:: "Base64"
+Attachment Url::   <%=@results['Retrieve Attachment']['Url']%>
+Raise Errors:: True
+
+
+=== Results
+[Success]
+  If Raise Errors is set to False, will return true if the handler encountered any
+  errors
+[Error Message]
+  The error message if Raise Errors is set to False and an error was encountered
+[Message Id]
+  Id of the successfully sent message
+  
+== Detailed Description
+
+This handler: smtp_email_attachment_from_url works with this handler:
+kinetic_request_ce_attachment_info
+
+The use of these two Handlers in a Task tree will allow you to retrieve an 
+Attachment submitted from a Service Item and then email that Attachment file.
+
+The kinetic_request_ce_attachment_info handler has two fields to populate:
+
+Submission Id
+Field Name
+
+Take the JSON result from the kinetic_request_ce_attachment_info handler and map
+them to the following inputs in smtp_email_attachment_from_url
+
+Attachment Name:
+Attachment Content:
+Attachment Url:

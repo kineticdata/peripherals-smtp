@@ -1,0 +1,6 @@
+== SMTP Email With Attachment Send v2
+*Added Content Type to support the ability to send
+attachments from Questions/Answers
+
+== SMTP Email With Attachment Send v1 (2011-05-24)
+*Initial Build 

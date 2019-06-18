@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskInfo version="1.0">
+    <info name="server" description="Email server name or IP address."></info>
+    <info name="port" description="TCP port the email server is listening on."></info>
+    <info name="tls" description="A string, either 'Yes' or 'No' that defines whether the email server uses TLS encryption."></info>
+    <info name="from" description="The name and email address of the authenticating account.  Provide in the format: NAME &lt;EMAIL&gt;"></info>
+    <info name="username" description="Authentication string of a user allowed to send emails through the email server."></info>
+    <info name="password" type="encrypted" description="Password associated with the specified user."></info>
+    <info name="enable_debug_logging" description="Enables debug logging if the value is set to 'Yes'.">No</info>
+</taskInfo>

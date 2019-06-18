@@ -1,0 +1,5 @@
+== SMTP Email Attachment From Url V2 (2019-05-14)
+  Refactored to remove Java dependencies.
+
+== SMTP Email Attachment From Url V1 (2016-03-21)
+  Initial Version

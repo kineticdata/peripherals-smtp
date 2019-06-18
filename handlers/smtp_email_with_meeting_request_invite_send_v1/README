@@ -1,0 +1,36 @@
+== ICS_EventInvite_Send
+Creats an ICS calendar event and sends the file via email to a list of
+recipients
+
+IMPORTANT:  To use this handler you must remove the mail.jar file from the
+kineticTask application.  The mail.jar file is stored in the following directory
+kineticTask/WEB-INF/lib.  This will require you to restart your web server as
+well.  This is necessary because mail.jar is an unused jar file and it creates a
+conflict with a library used by this handler.  This step will not be necessary
+with versions of Kinetic Task 1.0.3 or later because mail.jar will no longer be
+distributed with the application.
+
+=== Parameters
+[To]
+  A comma separated list of email address to be used as the intended recipients.
+  Custom names can be used if any of the addresses are provided in the format:
+  NAME <ADDRESS>
+[Summary]
+  A short summary of the event
+[Description]
+  A full description of the event
+[Start Date/Time]
+  A start Date/Time of the event(in ISO8601 format)
+[End Date/Time]
+  An end Date/Time of the event(in ISO8601 format)
+
+==== Sample Configuration
+To::              <%=@answer['Req Full Name']%> <<%=@answer['Req Email']%>>
+Summary::         <%= @answer['Event Summary'] %>
+Description::     <%= @answer['Event Description'] %>
+Start Date/Time:: <%= @answer['Start Date'] %>
+End Date/Time::   <%= @answer['End Date'] %>
+
+=== Results
+[Message Id]
+  The message Id of the sent email message.

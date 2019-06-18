@@ -1,0 +1,8 @@
+SMTP Email Send V1 (2017-03-10)
+* Rewrote handler in Ruby
+
+SMTP Email Send V1.2 (2017-05-03)
+* Updated with error_handling parameter
+
+SMTP Email Send V1.3 (2018-04-20)
+* Username and Password info values are no longer required

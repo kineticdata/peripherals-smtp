@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskInfo version="1.0">
+  <info name="server" required="true" description="Email server name or IP address."></info>
+  <info name="port" required="true" description="TCP port the email server is listening on.">25</info>
+  <info name="tls" required="true" description="A string, either 'true' or 'false' that defines whether the email server requires encryption.">false</info>
+  <info name="username" required="false" description="Authentication string of a user allowed to send emails through the email server."></info>
+  <info name="password" required="false" type="encrypted" description="Password associated with the specified user."></info>
+</taskInfo>
