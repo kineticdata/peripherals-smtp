@@ -6,3 +6,6 @@ SMTP Email Send V1.2 (2017-05-03)
 
 SMTP Email Send V1.3 (2018-04-20)
 * Username and Password info values are no longer required
+
+SMTP Email Send V1.4 (2019-07-16)
+* Added bcc as an optional parameter
