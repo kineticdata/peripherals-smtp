@@ -1,6 +1,7 @@
 ---
 repo-name: peripherals-smtp
 categories:
-- Messaging
+  - Messaging
 display-name: SMTP
-manufacture: 
+manufacturer:
+description: SMTP is a protocol used to send and receive email messages.
