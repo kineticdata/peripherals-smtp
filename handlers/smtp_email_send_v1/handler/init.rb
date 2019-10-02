@@ -49,6 +49,7 @@ class SmtpEmailSendV1
       password                = @info_values["password"]
       from                    = @parameters["from"]
       to                      = @parameters["to"]
+      bcc                     = @parameters["bcc"]
       subject                 = @parameters["subject"]
       htmlbody                = @parameters["htmlbody"]
       textbody                = @parameters["textbody"]
@@ -71,6 +72,7 @@ class SmtpEmailSendV1
       mail = Mail.new do
         from          "#{from}"
         to            "#{to}"
+        bcc           "#{bcc}"
         subject       "#{subject}"
 
         text_part do

@@ -10,6 +10,7 @@
             tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
         <parameter id="from" label="From (Email Address)" required="true" tooltip="The email address of the simulated sender."/>
         <parameter id="to" label="To (Email Address)" required="true" tooltip="The email address of the intended recipient."/>
+        <parameter id="bcc" label="Bcc (Email Address)" required="false" tooltip="The email address of the intended recipient."/>
         <parameter id="subject" label="Subject" required="false" tooltip="The subject of the email."/>
         <parameter id="htmlbody" label="HTML Body" required="false" tooltip="HTML representing the body of a rich email."/>
         <parameter id="textbody" label="Alternate (text) Body" required="false" tooltip="A plaintext message that will be displayed if the recipient can't display multipart HTML emails."/>
@@ -26,6 +27,7 @@
             <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ? @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
             <parameter name="from">&lt;%= @parameters['from'] %&gt;</parameter>
             <parameter name="to">&lt;%= @parameters['to'] %&gt;</parameter>
+            <parameter name="bcc">&lt;%= @parameters['bcc'] %&gt;</parameter>
             <parameter name="subject">&lt;%= @parameters['subject'] %&gt;</parameter>
             <parameter name="htmlbody">&lt;%= @parameters['htmlbody'] %&gt;</parameter>
             <parameter name="textbody">&lt;%= @parameters['textbody'] %&gt;</parameter>
