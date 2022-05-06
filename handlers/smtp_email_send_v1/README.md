@@ -1,40 +1,51 @@
-== Smtp Email Send
+# Smtp Email Send
 This handler builds and sends a plaintext or HTML encoded email directly to the specified email
 server specified by the associated task info values.
 
-=== Parameters
+## Parameters
 [Error Handling]
   Determine what to return if an error is encountered.
+
 [From (Email Address)]
   The email address of the simulated sender.
+
 [To (Email Address)]
   A comma separated list of email address to be used as the intended recipients.  
   Custom names can be used if any of the addresses are provided in the format: NAME <ADDRESS>
+
 [BCC]
   A comma separated list of email address to be used as the intended BCC recipients.  
   Custom names can be used if any of the addresses are provided in the format: NAME <ADDRESS>
+
 [Subject]
   The subject of the email.
+
 [HTML Body]
   HTML representing the body of a rich email.
+
 [Alternate (text) Body]
   A plaintext message that will be displayed if the recipient can't display multipart HTML emails.
 
-==== Sample Configuration
+### Sample Configuration
 Error Handling:        Error Message
+
 To (Email Address):    <%=@answer['Req Full Name']%> <<%=@answer['Req Email']%>>
+
 BCC:
 From (Email Address):  <%=@results['Retrieve Fulfiller']['Name']%> <<%=@results['Retrieve Fulfiller']['Email']%>>
+
 Subject:               <%= @answer['Event Summary'] %>
+
 HTML Body:             <html>Your ...<br/>Thanks,<br/><%=@results['Retrieve Fulfiller']['Name']%><br/><img src="http://my.company.com/images/logo"/></html>
+
 Alternate (text) Body: Your..... ?Thanks <%=@results['Retrieve Fulfiller']['Name']%>
 
-=== Results
+## Results
 [Message Id]
   The message Id of the sent email message.
 [Handler Error Message]
 
-=== Detailed Description
+## Detailed Description
 This handler builds and sends a simple Smtp email directly to an email server based on the specified
 info items and parameters passed to the task instance. When an html body is set, the handler will
 replace images that have a fully qualified source prefixed with the string 'cid:' with embedded
