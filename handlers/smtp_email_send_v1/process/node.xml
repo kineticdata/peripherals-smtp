@@ -27,7 +27,7 @@
             <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ? @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
             <parameter name="from">&lt;%= @parameters['from'] %&gt;</parameter>
             <parameter name="to">&lt;%= @parameters['to'] %&gt;</parameter>
-            <parameter name="bcc">&lt;%= @parameters['bcc'] %&gt;</parameter>
+            <parameter name="bcc">&lt;%= @parameters.has_key?('bcc') ? @parameters['bcc'] : "" %&gt;</parameter>
             <parameter name="subject">&lt;%= @parameters['subject'] %&gt;</parameter>
             <parameter name="htmlbody">&lt;%= @parameters['htmlbody'] %&gt;</parameter>
             <parameter name="textbody">&lt;%= @parameters['textbody'] %&gt;</parameter>

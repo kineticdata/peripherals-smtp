@@ -9,3 +9,6 @@ SMTP Email Send V1.3 (2018-04-20)
 
 SMTP Email Send V1.4 (2019-07-16)
 * Added bcc as an optional parameter
+
+SMTP Email Send V1.5 (2021-04-29)
+* Change bcc to optionally exist in the tree node
