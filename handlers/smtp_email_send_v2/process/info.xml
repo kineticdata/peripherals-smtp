@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskInfo version="2.0">
+  <info name="server" required="false" description="Email server name or IP address."></info>
+  <info name="port" required="false" description="TCP port the email server is listening on.">25</info>
+  <info name="tls" required="false" description="A string, either 'true' or 'false' that defines whether the email server requires encryption.">false</info>
+  <info name="username/Client ID" required="false" description="Authentication string of a user allowed to send emails through the email server. Leave blank for relay"></info>
+  <info name="password/Secret" required="false" type="encrypted" description="Password associated with the specified user."></info>
+  <info name="smtp_from_address" required="false" description="From address (Set only this for relay mode)"></info>
+  <info name="authtype" required="false" description="Basic, Graph"></info>
+  <info name="Tenant ID" required="false" description="Only required for Graph"></info>
+  <info name="log_level" required="false" description="info, error, debug"></info>
+</taskInfo>
